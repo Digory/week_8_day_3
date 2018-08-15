@@ -10,13 +10,15 @@ public class Student {
     private String name;
     private int age;
     private int enrolmentNumber;
+    private Mentor mentor;
 
     public Student(){}
 
-    public Student(String name, int age, int enrolmentNumber) {
+    public Student(String name, int age, int enrolmentNumber, Mentor mentor) {
         this.name = name;
         this.age = age;
         this.enrolmentNumber = enrolmentNumber;
+        this.mentor = mentor;
     }
 
     @Id
@@ -41,6 +43,13 @@ public class Student {
         return enrolmentNumber;
     }
 
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "mentor_id", nullable = false)
+    public Mentor getMentor() {
+        return mentor;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -56,5 +65,9 @@ public class Student {
 
     public void setEnrolmentNumber(int enrolmentNumber) {
         this.enrolmentNumber = enrolmentNumber;
+    }
+
+    public void setMentor(Mentor mentor) {
+        this.mentor = mentor;
     }
 }
