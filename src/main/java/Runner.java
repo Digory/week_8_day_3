@@ -8,7 +8,10 @@ public class Runner {
         Mentor mentorMike = new Mentor("Mike");
         DBHelper.save(mentorMike);
 
-        Student studentStoo = new Student("Stoo", 30, 2, mentorMike);
+        Course courseSwimming = new Course("Ultimate swimming", LevelType.SWIMMING_LEVEL_ONE);
+        DBHelper.save(courseSwimming);
+
+        Student studentStoo = new Student("Stoo", 30, 2, mentorMike, courseSwimming);
         DBHelper.save(studentStoo);
 
 //
@@ -18,8 +21,7 @@ public class Runner {
 //        Instructor instructorAlex = new Instructor("Alex");
 //        DBHelper.save(instructorAlex);
 //
-//        Course courseSwimming = new Course("Ultimate swimming", LevelType.SWIMMING_LEVEL_ONE);
-//        DBHelper.save(courseSwimming);
+//
 
 
     }
