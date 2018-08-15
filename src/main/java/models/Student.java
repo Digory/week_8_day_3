@@ -1,6 +1,10 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "students")
@@ -12,6 +16,7 @@ public class Student {
     private int enrolmentNumber;
     private Mentor mentor;
     private Course course;
+    private List<Lesson> lessons;
 
     public Student(){}
 
@@ -21,6 +26,7 @@ public class Student {
         this.enrolmentNumber = enrolmentNumber;
         this.mentor = mentor;
         this.course = course;
+      //  lessons = new ArrayList<Lesson>();
     }
 
     @Id
@@ -45,7 +51,6 @@ public class Student {
         return enrolmentNumber;
     }
 
-
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mentor_id", nullable = false)
     public Mentor getMentor() {
@@ -58,10 +63,24 @@ public class Student {
         return course;
     }
 
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @ManyToMany
+    @JoinTable(
+            name = "lessons_students",
+            joinColumns = {@JoinColumn(name = "student_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "lesson_id", nullable = false, updatable = false)}
+    )
+    public List<Lesson> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons = lessons;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
-
 
     public void setName(String name) {
         this.name = name;
