@@ -1,6 +1,7 @@
 package db;
 
 import models.Course;
+import models.Lesson;
 import models.Student;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -26,5 +27,10 @@ public class DBCourse {
             session.close();
         }
         return results;
+    }
+
+    public static void addLessonToCourse(Lesson lesson, Course course){
+        course.addLesson(lesson);
+        DBHelper.update(lesson);
     }
 }

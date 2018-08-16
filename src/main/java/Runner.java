@@ -27,9 +27,9 @@ public class Runner {
         Lesson lessonSwim2 = new Lesson("How to not drown", 3, courseSwimming, instructorAlex);
         DBHelper.save(lessonSwim2);
 
-//        studentStoo.addLesson(lessonSwim1);
-//        lessonSwim1.addStudent(studentStoo);
-//        DBHelper.update(studentStoo);
+        DBCourse.addLessonToCourse(lessonSwim1, courseSwimming);
+        DBCourse.addLessonToCourse(lessonSwim2, courseSwimming);
+        DBStudent.addStudentToCourse(studentStoo, courseSwimming);
 
         List<Lesson> lessonsForStudent = DBStudent.getLessonsForStudent(studentStoo);
 

@@ -20,6 +20,7 @@ public class Course {
         this.title = title;
         this.type = type;
         this.students = new ArrayList<Student>();
+        lessons = new ArrayList<Lesson>();
     }
 
     @Id
@@ -72,5 +73,9 @@ public class Course {
 
     public void addStudent(Student student){
         students.add(student);
+    }
+
+    public void addLesson(Lesson lesson){
+        lessons.add(lesson);
     }
 }

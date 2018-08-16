@@ -1,10 +1,12 @@
 package db;
 
+import models.Course;
 import models.Lesson;
 import models.Student;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
@@ -25,6 +27,11 @@ public class DBStudent {
             session.close();
         }
         return results;
+    }
+
+    public static void addStudentToCourse(Student student, Course course){
+        course.addStudent(student);
+        DBLesson.addLessonsToStudent(student);
     }
 }
 
