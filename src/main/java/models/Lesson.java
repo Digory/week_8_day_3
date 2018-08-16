@@ -23,7 +23,7 @@ public class Lesson {
         this.title = title;
         this.classroomNumber = classroomNumber;
         this.course = course;
-        //students = new ArrayList<Student>();
+        students = new ArrayList<Student>();
         this.instructor = instructor;
     }
 
@@ -89,6 +89,10 @@ public class Lesson {
 
     public void setClassroomNumber(int classroomNumber) {
         this.classroomNumber = classroomNumber;
+    }
+
+    public void addStudent(Student student){
+        students.add(student);
     }
 
 

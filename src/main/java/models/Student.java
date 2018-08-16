@@ -26,7 +26,7 @@ public class Student {
         this.enrolmentNumber = enrolmentNumber;
         this.mentor = mentor;
         this.course = course;
-      //  lessons = new ArrayList<Lesson>();
+        lessons = new ArrayList<Lesson>();
     }
 
     @Id
@@ -100,5 +100,9 @@ public class Student {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public void addLesson(Lesson lesson){
+        lessons.add(lesson);
     }
 }
