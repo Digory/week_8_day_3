@@ -1,3 +1,4 @@
+import db.DBCourse;
 import db.DBHelper;
 import db.DBStudent;
 import models.*;
@@ -30,7 +31,9 @@ public class Runner {
 //        lessonSwim1.addStudent(studentStoo);
 //        DBHelper.update(studentStoo);
 
-        List<Lesson> lessons = DBStudent.getLessonsForStudent(studentStoo);
+        List<Lesson> lessonsForStudent = DBStudent.getLessonsForStudent(studentStoo);
+
+        List<Student> studentsOnCourse = DBCourse.getStudentsOnCourse(courseSwimming);
 
     }
 }
